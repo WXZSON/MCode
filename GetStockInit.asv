@@ -32,25 +32,13 @@ figure('name','Close Price Smooth');
 hold on;
 h1=plot(Close);
 X=1:1:length(Close);
-c2 = polyfit(X,Close' , 2);
-d2 = polyval(c2, X, 1);
-h2=plot(X, d2, 'r'); 
-
-
-c3 = polyfit(X,Close' , 3);
-d3 = polyval(c3, X, 1);
-h3=plot(X, d3, 'g'); 
-
-
-c6 = polyfit(X,Close' , 6);
-d6 = polyval(c6, X, 1);
-h6=plot(X, d6, 'b'); 
-
+c = polyfit(X,Close' , 2);
+d = polyval(c, X, 1);
+h2=plot(X, d, 'r'); 
 hold off;
 %candle(High,Low,Close,Open);
 %candlesticks(Open,High,Low,Close);
 xlim( [0 length(Open)+1] );
-legend([h1,h2, h3, h6],'O', '2', '3','6','Location','Southwest');
 title('Weibo Close Smooth');
 
 toc;  
