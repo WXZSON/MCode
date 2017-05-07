@@ -20,21 +20,21 @@ format compact;
 % % K???
 % scrsz = get(0,'ScreenSize');
 % figure('Position',[scrsz(3)*1/4 scrsz(4)*1/6 scrsz(3)*4/5 scrsz(4)]*3/4);
-
-conn = yahoo('news.sohu.com');
-Yahoo_HSI_Data = fetch(conn,{'^HSI'},{'Adj Close'},'2012-01-01','2012-04-01','d');
-
-c = yahoo ;
-x=1;
-d = fetch(c,'IBM');
-DataYahoo = fetch(c,'WB','3/27/2015','3/27/2017');
-close(c);
-
-E = flipud(DataYahoo);
-Open = E(:,2);
-High = E(:,3);
-Low = E(:,4);
-Close = E(:,5);
+E = hist_stock_data('05062016','05042017','GOOG');
+% conn = yahoo('news.sohu.com');
+% Yahoo_HSI_Data = fetch(conn,{'^HSI'},{'Adj Close'},'2012-01-01','2012-04-01','d');
+% 
+% c = yahoo ;
+% x=1;
+% d = fetch(c,'IBM');
+% DataYahoo = fetch(c,'WB','3/27/2015','3/27/2017');
+% close(c);
+% 
+% E = flipud(DataYahoo);
+Open = E.Open;
+High = E.High;
+Low = E.Low;
+Close = E.Close;
 candle(High,Low,Close,Open);
 %candlesticks(Open,High,Low,Close);
 xlim( [0 length(Open)+1] );
